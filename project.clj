@@ -1,4 +1,4 @@
-(defproject io.github.manetu/gitlab-api "0.1.0-SNAPSHOT"
+(defproject io.github.manetu/gitlab-api "1.0.0"
   :description "A babashka compatible library for accessing the gitlab API "
   :url "https://github.com/manetu/gitlab-api"
   :license {:name "MIT"
