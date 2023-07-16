@@ -1,4 +1,6 @@
-(ns manetu.gitlab-api
+;; Copyright © Manetu, Inc.  All rights reserved
+
+(ns manetu.gitlab.api
   (:require [clojure.string :as string]
             [babashka.curl :as curl]
             [environ.core :refer [env]]
