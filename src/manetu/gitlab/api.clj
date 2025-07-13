@@ -51,6 +51,8 @@
                                              (m/map-vals #(Integer/parseInt %) $))]
      (when (and (>= status 200) (< status 400))
        (let [acc (concat acc body)]
-         (if (>= x-page x-total-pages)
-           acc
+         (if (or (nil? x-total-pages) (nil? x-page) (>= x-page x-total-pages))
+           (do
+             (log/debug "invoke-allpages complete x-total-pages:" x-total-pages "x-page:" x-page)
+             acc)
            (recur acc (inc x-page))))))))
