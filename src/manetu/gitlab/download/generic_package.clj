@@ -35,8 +35,9 @@
     (some? (re-find (re-pattern (str "^" prefix)) s))))
 
 (defn- open-download
-  [{:keys [package-name] :as options} version]
-  (let [url (str gitlab/gitlab-api-base (compute-api-prefix options) "/generic/" package-name "/" version "/" package-name ".tgz")]
+  [{:keys [package-name package-file] :as options} version]
+  (let [package-file (or package-file (str package-name ".tgz"))
+        url (str gitlab/gitlab-api-base (compute-api-prefix options) "/generic/" package-name "/" version "/" package-file)]
     (log/debug "url:" url)
     (:body
       (curl/get url {:headers {"PRIVATE-TOKEN" gitlab/gitlab-token}
